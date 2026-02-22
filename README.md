@@ -14,12 +14,12 @@ Each MNIST image is a 28×28 grayscale image, flattened into a vector of 784 pix
 
 ### The Classifier
 
-The math for how the model works, comes out to a linear equation that is interpreted as a probability. The digits 0 to 9 yield 10 distinct **classes**. Each input image has pixels (or dimensions) 28 × 28, which results in 784 total **input features** after flattening. So essentially a flattened vector representing pixel values will be fed in and the predicted digit based on the input image will come out.
+The math for how the model works, comes out to a linear equation that is interpreted as a probability. The digits 0 to 9 yield 10 distinct **classes**. Each input image has pixels (or dimensions) 28 × 28, which results in 784 total **input features** after flattening. So essentially a flattened vector representing pixel values will be fed in and the predicted digit based on the input image will come out. Each $x_i$ from the input image, represents the brightness of pixel $i$, which is multiplied by a class-specific weight $W_{k,i}$. Meaning, for each digit $k$ every input pixel's brightness is multiplied by a weight based on that particular pixel's importance to that digit. The sum of all those multiplications plus a bias term per class, produces the logit. Ten logits are produced from each input image, but ultimately only one will be chosen (after argmax) as the most probable. 
 
 The logits for this linear classifier can be expressed as:
 
 $$
-z_k = b_k + \sum_{i=1}^{784} W_{k,i}\, x_i
+z_k = b_k + \sum_{i=1}^{784} W_{k,i}\ x_i
 $$
 
 where:
